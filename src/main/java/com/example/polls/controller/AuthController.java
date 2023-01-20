@@ -29,9 +29,7 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.Collections;
 
-/**
- * Created by rajeevkumarsingh on 02/08/17.
- */
+
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -85,7 +83,7 @@ public class AuthController {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
+        Role userRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
                 .orElseThrow(() -> new AppException("User Role not set."));
 
         user.setRoles(Collections.singleton(userRole));
